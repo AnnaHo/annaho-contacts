@@ -1,0 +1,19 @@
+.container
+  .row    
+    =link_to "New", new_agent_path, class: "btn btn-primary"
+    .row
+      .col-xs-12.col-md-8
+        %table.table
+          %thead
+            %tr
+              %th= "Agent Name"
+              %th= "phone"
+              %th= "Edit"
+          %tbody
+            -@agents.each do |agent|
+              %tr
+                %td=link_to "#{agent.name}", agent_path(agent)
+                %td=agent.default_contact
+                %td
+                  =link_to "Edit", edit_agent_path(agent), class: "btn btn-primary"
+                  = link_to "Delete", agent_path(agent), method: :delete, :confirm=>"Are you sure to delete contact?", class: "btn btn-danger"

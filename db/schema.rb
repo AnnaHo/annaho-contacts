@@ -14,11 +14,17 @@
 ActiveRecord::Schema.define(version: 20141018031108) do
 
   create_table "agents", force: true do |t|
-    t.string "name", null: false
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contacts", force: true do |t|
-    t.string "phone"
+    t.integer  "agent_id"
+    t.string   "phone"
+    t.boolean  "default"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

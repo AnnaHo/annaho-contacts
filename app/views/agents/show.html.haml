@@ -1,0 +1,15 @@
+.container
+  %h2= @agent.name
+  %table.table
+    %thead
+      %tr
+        %th= "phone"
+        %th= "edit/destroy"
+    %tbody 
+      -@agent.contacts.each do |contact|
+        %tr
+          %td= contact.phone
+          %td
+            = link_to "Edit", edit_agent_contact_path(@agent, contact), class: "btn btn-primary"
+            = link_to "Delete", agent_contact_path(@agent, contact), method: :delete, :confirm=>"Are you sure to delete contact?", class: "btn btn-danger"
+                

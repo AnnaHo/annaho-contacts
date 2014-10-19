@@ -1,0 +1,6 @@
+.form-group
+  = f.label :phone, :class=>"form-label"
+  %table.form-controls
+    %td= f.text_field :phone
+    - if f.object.new_record?
+      %td= link_to_remove_fields '-', f
