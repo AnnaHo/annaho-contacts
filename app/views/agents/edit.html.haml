@@ -1,0 +1,17 @@
+.container
+  .row
+    =form_for @agent, :html => { :class => 'form'} do |f|
+      .form-group
+        = f.label :name, :class=> "form-label"
+        .form-controls
+          = f.text_field :name
+      .form-group
+        .form-controls
+          = f.fields_for :contacts do |contact_fields|
+            =render 'contact_fields', f: contact_fields
+          %tr.fields
+            %td{:colspan => "2"}
+              = link_to_add_fields '+', f, :contacts
+      .form-controls
+        = f.button :submit, class: "btn btn-primary"
+        = link_to "cancel", agents_path,:class => "btn btn-default"
