@@ -1,0 +1,14 @@
+.container
+  .row
+    =form_for [@agent, @contact], :html => { :class => 'form'} do |f|
+      .form-group
+        = f.label :phone, :class=> "form-label"
+        .form-controls
+          = f.text_field :phone
+      .form-group
+        = f.label :default, :class=> "form-label"
+        .form-controls
+          = f.check_box :default      
+      .form-controls
+        = f.button :submit, class: "btn btn-primary"
+        = link_to "cancel", agent_path(@agent),:class => "btn btn-default"

@@ -5,6 +5,10 @@ class Agent < ActiveRecord::Base
   accepts_nested_attributes_for :contacts, reject_if: :all_blank, :allow_destroy => true
 
   def default_contact
-    contacts.where(default: true).first.phone
+    if contacts.blank? || contacts.where(default: true).blank?
+      return ""
+    else
+      contacts.where(default: true).first.phone 
+    end
   end
 end
